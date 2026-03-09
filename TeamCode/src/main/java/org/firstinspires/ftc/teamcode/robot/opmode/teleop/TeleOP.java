@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.robot.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.robot.subsystem.MecanumDrivetrain;
 
 
@@ -13,12 +14,13 @@ public class TeleOP extends OpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     private MecanumDrivetrain mecanumDrivetrain;
-
+    private Intake intake;
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
 
         mecanumDrivetrain = new MecanumDrivetrain(hardwareMap);
+        intake = new Intake(hardwareMap);
 
         telemetry.addData("Status", "Initialized");
     }
