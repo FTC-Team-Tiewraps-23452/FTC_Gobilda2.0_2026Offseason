@@ -10,4 +10,7 @@ public class Intake {
         feeder = hardwareMap.get(DcMotor.class, "feeder");
         feeder.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+    public void intakePower(double power){
+        feeder.setPower(power);
+    }
 }
