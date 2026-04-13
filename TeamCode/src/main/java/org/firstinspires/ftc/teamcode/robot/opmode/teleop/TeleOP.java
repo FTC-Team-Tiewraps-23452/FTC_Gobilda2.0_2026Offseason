@@ -37,6 +37,8 @@ public class TeleOP extends OpMode {
     public void loop() {
         if (gamepad1.right_bumper) {
             intake.intakePower(0.5);
+        } else if (gamepad1.left_bumper) {
+            intake.intakePower(-0.5);
         } else {
             intake.intakePower(0);
         }
