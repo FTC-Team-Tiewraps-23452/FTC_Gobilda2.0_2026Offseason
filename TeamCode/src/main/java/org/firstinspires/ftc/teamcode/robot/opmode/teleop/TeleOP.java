@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.robot.subsystem.Intake;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Shooter;
 
 
 @TeleOp(name="TeleOP-IntoTheDeep-", group="Iterative Opmode")
@@ -13,11 +14,13 @@ public class TeleOP extends OpMode {
     private final ElapsedTime runtime = new ElapsedTime();
 
     private Intake intake;
+    private Shooter shooter;
     @Override
     public void init() {
         telemetry.addData("Status", "Initializing");
 
         intake = new Intake(hardwareMap);
+        shooter = new Shooter(hardwareMap);
 
         telemetry.addData("Status", "Initialized");
     }
@@ -41,6 +44,11 @@ public class TeleOP extends OpMode {
             intake.intakePower(-0.5);
         } else {
             intake.intakePower(0);
+        }
+        if (gamepad1.right_trigger >= 0.5) {
+            shooter.shooterPower(1);
+        } else {
+            shooter.shooterPower(0);
         }
         telemetry.addData("Status", "Run Time: " + runtime.toString());
     }
